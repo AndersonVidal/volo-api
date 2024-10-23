@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @AllArgsContructor
 @Getter
 @Setter
-public class User {
+public class User extends BasicModel {
     @Id
     @GeneratedValue(strategy = GeneratedValue.IDENTITY)
     private Long id;
@@ -23,20 +23,4 @@ public class User {
 
     @Column(name = "perfil_image")
     private String perfilImage;
-
-    @Column(name = "created_at", updatable = false)
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
 }
